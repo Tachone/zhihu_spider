@@ -54,3 +54,4 @@ def mongo_to_csv():
             print "to csv,it cost:", time.time() - start_time
             print "Total %d" %CNT
 
+

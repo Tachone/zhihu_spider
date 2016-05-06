@@ -13,6 +13,9 @@ from mongodbs import Zhihu_User_Profile
 
 #from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
+'''
+爬虫核心逻辑
+'''
 
 class Spider():
 
@@ -20,6 +23,8 @@ class Spider():
         self.url=url
         self.option=option
         self.header={}
+
+        #cookie要自己从浏览器获取
         self.header["User-Agent"]="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:35.0) Gecko/20100101 Firefox/35.0"
         self.cookies={"q_c1":"8074ec0c513747b090575cec4a547cbd|1459957053000|1459957053000",
                       "l_cap_id":'"Y2MzODMyYjgzNWNjNGY4YzhjMDg4MWMzMWM2NmJmZGQ=|1462068499|cd4a80252719f069cc467a686ee8c130c5a278ae"',
@@ -61,6 +66,7 @@ class Spider():
         else:
             return ''
 
+    #使用xpath解析html
     def analy_profile(self,html_text):
         tree=html.fromstring(html_text)
         self.user_name=self.get_xpath_source(tree.xpath("//a[@class='name']/text()"))
@@ -70,7 +76,7 @@ class Spider():
             self.user_gender="female"
         else:
             self.user_gender="male"
-        self.user_employment=self.get_xpath_source(tree.xpath("//span[@class='employment itme']/@title"))
+        self.user_employment=self.get_xpath_source(tree.xpath("//span[@class='employment item']/@title"))
         self.user_employment_extra=self.get_xpath_source(tree.xpath("//span[@class='position item']/@title"))
         self.user_education_school=self.get_xpath_source(tree.xpath("//span[@class='education item']/@title"))
         self.user_education_subject=self.get_xpath_source(tree.xpath("//span[@class='education-extra item']/@title"))
@@ -132,7 +138,7 @@ class Spider():
         new_profile.save()
         print "saved: %s \n" %self.user_name
 
-
+#　核心模块,bfs宽度优先搜索
 def BFS_Search(option):
     global red
     while True:
@@ -158,6 +164,7 @@ if __name__=='__main__':
 
     BFS_Search(option)
 
+    #使用多进程，注意，实际测试出来，并没有明显速度的提升,瓶颈在IO写;如果直接输出的话,速度会明显加快
     res=[]
     process_Pool=Pool(4)
     for i in range(4):

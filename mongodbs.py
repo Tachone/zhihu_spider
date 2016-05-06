@@ -7,6 +7,7 @@ sys.setdefaultencoding("utf-8")
 
 import mongoengine
 
+#连接mongodb数据库，创建my_zhihu_data
 mongoengine.connect('my_zhihu_data')
 
 class Zhihu_User_Profile(mongoengine.Document):
