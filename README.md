@@ -7,3 +7,8 @@
     （５）数据存储至no-sql数据库：mongodb（高效轻量级并且支持并发）
     （６）使用python的进程池模块提高抓取速度
     （７）使用csv,pandas,matplotlib模块进行数据处理（需要完善）
+
+数据展示：
+![image](https://github.com/Tachone/zhihu_spider/blob/master/career.png)
+![image](https://github.com/Tachone/zhihu_spider/blob/master/city.png)
+![image](https://github.com/Tachone/zhihu_spider/blob/master/title.png)
