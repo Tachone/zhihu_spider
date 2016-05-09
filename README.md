@@ -7,7 +7,11 @@
     （５）数据存储至no-sql数据库：mongodb（高效轻量级并且支持并发）
     （６）使用python的进程池模块提高抓取速度
     （７）使用csv,pandas,matplotlib模块进行数据处理（需要完善）
+    
      具体可以参考我的博客：http://blog.csdn.net/nk_test/article/details/51330971
+     运行的时候需要指定参数 ： print_data_out 表示输出至屏幕；store_data_to_mongo代表存入mongodb数据库
+     同时依赖redis,mongodb以及python的部分模块，请自行安装。
+     
 
 数据展示：
 ![image](https://github.com/Tachone/zhihu_spider/blob/master/career.png)
