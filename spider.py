@@ -143,7 +143,7 @@ def BFS_Search(option):
     global red
     while True:
         temp=red.rpop('red_to_spider')
-        if temp==0:
+        if type(temp)==None:
             print 'empty'
             break
         result=Spider(temp,option)
