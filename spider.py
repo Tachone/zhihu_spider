@@ -165,6 +165,7 @@ if __name__=='__main__':
     BFS_Search(option)
 
     #使用多进程，注意，实际测试出来，并没有明显速度的提升,瓶颈在IO写;如果直接输出的话,速度会明显加快
+    '''
     res=[]
     process_Pool=Pool(4)
     for i in range(4):
@@ -176,6 +177,7 @@ if __name__=='__main__':
     for num in res:
         print ":::",num.get()
     print 'Work had done!'
+    '''
 
 
 
