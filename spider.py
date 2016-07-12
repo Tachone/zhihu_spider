@@ -14,7 +14,7 @@ from mongodbs import Zhihu_User_Profile
 #from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 '''
-爬虫核心逻辑
+爬虫核心逻辑 
 '''
 
 class Spider():
